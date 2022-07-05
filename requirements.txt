@@ -1,0 +1,2 @@
+python-dotenv==0.20.0
+cumulio==0.2.3
