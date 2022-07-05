@@ -1,6 +1,10 @@
 from cumulio.cumulio import Cumulio
 from dotenv import load_dotenv
+from flask import Flask
 import os
+
+app = Flask(__name__)
+
 
 load_dotenv()
 
@@ -16,4 +20,11 @@ properties["email"] = os.getenv('USER_EMAIL')
 properties["suborganization"] = "< user suborganization >"
 properties["role"] = "viewer"
 
-authorization = client.create("authorization", properties)
+
+@app.route('/')
+def hello_world():
+  authorization = client.create("authorization", properties)
+  return 'Hello, World!'
+
+if __name__ == '__main__':
+  app.run()
